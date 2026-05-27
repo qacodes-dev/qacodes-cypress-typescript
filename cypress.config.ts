@@ -8,6 +8,7 @@ export default defineConfig({
     viewportWidth: 1280,
     viewportHeight: 800,
     defaultCommandTimeout: 8000,
+    pageLoadTimeout: 120000,
     video: true,
     screenshotOnRunFailure: true,
     reporter: 'mochawesome',

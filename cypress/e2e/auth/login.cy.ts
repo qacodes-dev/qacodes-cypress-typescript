@@ -19,7 +19,7 @@ describe('Authentication', () => {
   })
 
   it('shows error for locked-out user', () => {
-    cy.visit('/', { timeout: 90000 })
+    LoginPage.visit()
     LoginPage.username().type('locked_out_user')
     LoginPage.password().type('secret_sauce')
     LoginPage.loginButton().click()
