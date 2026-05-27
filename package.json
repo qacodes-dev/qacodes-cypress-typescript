@@ -1,0 +1,23 @@
+{
+  "name": "qacodes-cypress-typescript",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "report": "mochawesome-merge cypress/results/*.json > cypress/results/merged.json && marge cypress/results/merged.json -f cypress-report -o cypress",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "cypress": "^13.0.0",
+    "mochawesome": "^7.0.0",
+    "mochawesome-merge": "^4.0.0",
+    "mochawesome-report-generator": "^6.0.0",
+    "typescript": "^5.0.0"
+  }
+}

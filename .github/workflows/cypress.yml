@@ -1,0 +1,33 @@
+name: Cypress tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.BASE_URL || 'https://www.saucedemo.com' }}
+          CYPRESS_TEST_USER_USERNAME: ${{ secrets.TEST_USER_USERNAME || 'standard_user' }}
+          CYPRESS_TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD || 'secret_sauce' }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-results
+          path: |
+            cypress/results
+            cypress/videos
+            cypress/screenshots
+          retention-days: 14
